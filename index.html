@@ -9,29 +9,53 @@
 </head>
 <body>
 	<header>
-		<div id="back"><img src="" alt=""></div>
 		<h1>
 			Infografía
 		</h1>
 	</header>
 	<div id="slider">
-		<section class="slide" id="home">
+		<!-- Home -->
+		<section class="slide" id="home" style="display:block">
 			<div class="mainlogo">
 				<figure>
 					<img src="images/diafelicidad.jpg" alt="">
-
-					</img>
 				</figure>
 			</div>
-			<div id = "paises"><a href=""></a></div>
-			<div id = "origen"><a href=""></a></div>
-			<div id = "curva"><a href=""></a></div>
-			<div id = "pregunta"><a href=""></a></div>
+			<div id = "paises" onClick="displaySection('home', 'secpaises')"></div>
+			<div id = "origen" onClick="displaySection('home', 'secorigen')"></div>
+			<div id = "curva" onClick="displaySection('home', 'seccurva')"></div>
+			<div id = "pregunta" onClick="displaySection('home', 'secpregunta')"></div>
 		</section>
-		<section class="slide" id="" style="display:none"></section>
-		<section class="slide" id="" style="display:none"></section>
-		<section class="slide" id="" style="display:none"></section>
-		<section class="slide" id="" style="display:none"></section>
+		<!-- Paises -->
+		<section class="slide" id="secpaises" style="display:none">
+			<div id="back" style="display:none">
+				<figure onClick="displaySection('secpaises', 'home')">
+					<img src="images/back.png" alt="">
+				</figure>
+			</div>
+		</section>
+		<!-- Origen -->
+		<section class="slide" id="secorigen" style="display:none">
+			<div id="back" style="display:none">
+				<figure onClick="displaySection('secorigen', 'home')">
+					<img src="images/back.png" alt="">
+				</figure>
+			</div>
+		</section>
+		<section class="slide" id="seccurva" style="display:none">
+			<div id="back" style="display:none">
+				<figure onClick="displaySection('seccurva', 'home')">
+					<img src="images/back.png" alt="">
+				</figure>
+			</div>
+		</section>
+		<section class="slide" id="secpregunta" style="display:none">
+			<div id="back" style="display:none">
+				<figure onClick="displaySection('secpregunta', 'home')">
+					<img src="images/back.png" alt="">
+				</figure>
+			</div>
+		</section>
 
 
 	</div>
@@ -40,4 +64,58 @@
 	</footer>
 	
 </body>
+
+
+	<script>
+		alertSize();
+
+		var search;
+		var show;
+
+		function alertSize(){
+			var myWidth = 0, myHeight = 0;
+
+			if(typeof(window.innerWidth) == "number"){
+				//No-IE
+				myWidth = window.innerWidth;
+				myHeight = window.innerHeight;
+			}else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)){
+				//IE 6+
+				myWidth = document.documentElement.clientWidth;
+				myHeight = document.documentElement.clientHeight;
+			}else if (document.body && (document.body.clientWidth || document.body.clientHeight)){
+				//IE 4
+				myWidth = document.body.clientWidth;
+				myHeight = document.body.clientHeight;
+			}			
+
+		}
+
+
+		function displaySection(actual, nav){
+								checkSection(nav);
+				search = document.getElementById(actual);
+				show = search.style.display;
+
+				if (show == "block"){
+					search.style.display = "none";
+					search = document.getElementById(nav);
+					search.style.display = "block";
+
+				}
+		}
+
+
+		function checkSection(nav){
+			search = document.getElementById('back');
+			if (nav != "home"){
+				search.style.display = "block";
+			}else if (nav == "home"){
+				search.style.display = "none";
+			}
+
+		}
+
+	</script>
+
 </html>
