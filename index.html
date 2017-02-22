@@ -12,6 +12,11 @@
 		<h1>
 			Infografía
 		</h1>
+		<div id="back" style="display:none">
+			<figure onClick="displaySection('home')">
+				<img src="images/back.png" alt="">
+			</figure>
+		</div>
 	</header>
 	<div id="slider">
 		<!-- Home -->
@@ -21,40 +26,26 @@
 					<img src="images/diafelicidad.jpg" alt="">
 				</figure>
 			</div>
-			<div id = "paises" onClick="displaySection('home', 'secpaises')"></div>
-			<div id = "origen" onClick="displaySection('home', 'secorigen')"></div>
-			<div id = "curva" onClick="displaySection('home', 'seccurva')"></div>
-			<div id = "pregunta" onClick="displaySection('home', 'secpregunta')"></div>
+			<div id = "paises" onClick="displaySection('secpaises')"></div>
+			<div id = "origen" onClick="displaySection('secorigen')"></div>
+			<div id = "curva" onClick="displaySection('seccurva')"></div>
+			<div id = "pregunta" onClick="displaySection('secpregunta')"></div>
 		</section>
 		<!-- Paises -->
 		<section class="slide" id="secpaises" style="display:none">
-			<div id="back" style="display:none">
-				<figure onClick="displaySection('secpaises', 'home')">
-					<img src="images/back.png" alt="">
-				</figure>
-			</div>
+
 		</section>
 		<!-- Origen -->
 		<section class="slide" id="secorigen" style="display:none">
-			<div id="back" style="display:none">
-				<figure onClick="displaySection('secorigen', 'home')">
-					<img src="images/back.png" alt="">
-				</figure>
-			</div>
+
 		</section>
+		<!-- Curva -->
 		<section class="slide" id="seccurva" style="display:none">
-			<div id="back" style="display:none">
-				<figure onClick="displaySection('seccurva', 'home')">
-					<img src="images/back.png" alt="">
-				</figure>
-			</div>
+
 		</section>
+		<!-- Pregunta -->
 		<section class="slide" id="secpregunta" style="display:none">
-			<div id="back" style="display:none">
-				<figure onClick="displaySection('secpregunta', 'home')">
-					<img src="images/back.png" alt="">
-				</figure>
-			</div>
+
 		</section>
 
 
@@ -71,6 +62,7 @@
 
 		var search;
 		var show;
+		var actual_Section = "home";
 
 		function alertSize(){
 			var myWidth = 0, myHeight = 0;
@@ -91,21 +83,22 @@
 
 		}
 
-
-		function displaySection(actual, nav){
-								checkSection(nav);
-				search = document.getElementById(actual);
+		//Cambia las pantallas
+		function displaySection(nav){
+				checkSection(nav);
+				search = document.getElementById(actual_Section);
 				show = search.style.display;
 
 				if (show == "block"){
 					search.style.display = "none";
 					search = document.getElementById(nav);
 					search.style.display = "block";
-
+					actual_Section = nav;
 				}
 		}
 
 
+		//Desactiva/Activa el botón back
 		function checkSection(nav){
 			search = document.getElementById('back');
 			if (nav != "home"){

@@ -21,22 +21,23 @@ header h1{
 	min-width: 240px;
 }
 
-#slider #back {
+header #back {
 	height: 100px;
 	width: 100px;
 	margin: 0px;
 	padding: 0px;
 	position: relative;
 	top: -50px;
+	z-index: 999;
 }
 
-#slider #back figure{
+header #back figure{
 	height: 100%;
 	margin: 0px;
 
 
 }
-#slider #back img{
+header #back img{
 	height: 100%;
 	width: 100%;
 
